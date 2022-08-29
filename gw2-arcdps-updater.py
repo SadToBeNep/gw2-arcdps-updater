@@ -29,9 +29,11 @@ headers = {
 }
 
 def yes_file():
-    CONFIG_FILE_CONTENT = open(GW_CONFIG_PATH).readline()
     current_date = getCurrentDateOfDll()
-    if config['MAIN']['last_updated'] == current_date:
+    config.read(GW_CONFIG_PATH)
+    print(config['MAIN']['last_updated'])
+    print(current_date)
+    if config['MAIN']['last_updated'] in current_date:
         print("No update is needed")
     else:
         print("Update required")
